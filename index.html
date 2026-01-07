@@ -171,15 +171,23 @@
             <li><p><a href='project-2.html'>Kirklees Healthy Working Life Programme</a>
             </p></li>
             </div>
-    </body>
-    <footer
-    <div    class="footer-content">
-        <p>© 2025 Phil Longworth</p>
-        <p>Last updated: <span id="last-updated"></span></p>
+    
+    <footer style="text-align: center; margin-top: 50px; font-size: 0.8em; color: gray;">
+    <p>Last Deployed: <span id="deploy-time">Loading...</span></p>
+</footer>
 
-          <script src="js/script.js"></script>
-    </div>
-    </footer>
+<script>
+    // This looks for a file called 'version.json' and displays the date
+    fetch('data/version.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('deploy-time').innerText = data.timestamp;
+        })
+        .catch(err => {
+            document.getElementById('deploy-time').innerText = "Manual Update";
+        });
+</script>
+    </body>
     
     
 </html>
